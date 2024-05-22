@@ -60,7 +60,12 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tagsId = Article_tag::where('article_id', $id)->pluck('tag_id');
+        $tags = Tag::whereIn('id', $tagsId)->pluck('name');
+        $article = Article::findOrFail($id);
+        $category = Category::findOrFail($article->category_id);
+
+        return view ('article.show', ['article'=> $article, 'category'=> $category ,'tags'=> $tags]);
     }
 
     /**
@@ -68,7 +73,7 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**

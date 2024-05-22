@@ -37,7 +37,7 @@ Route::get('/about', function () {
 Route::prefix('article')->group( function (){
     Route::get('/create', [ArticleController::class, 'create'])->middleware('auth')->name('article.create');
     Route::post('/', [ArticleController::class, 'store'])->middleware('auth')->name('article.store');
-
+    Route::get('/{id}', [ArticleController::class,'show'])->middleware('auth')->name('article.show');
 });
 
 require __DIR__.'/auth.php';
