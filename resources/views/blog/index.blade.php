@@ -9,20 +9,15 @@
             <!-- Menu Lateral -->
             <div class="col-md-2">
                 <div class="p-2" style="position: absolute; width: 15%;">
-                    <h4>Menu</h4>
+                    <h5>Categorias</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Link 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link 3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link 4</a>
-                        </li>
+
+                        @foreach ($categories as $category)
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{route('home.category', ['id' => $category->id])}}">{{$category->name}}</a>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>

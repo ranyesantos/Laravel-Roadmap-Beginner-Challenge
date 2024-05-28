@@ -15,8 +15,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
+
         $articles = Article::orderBy("created_at","desc")->paginate(10);
-        return view('blog.index', ['articles' => $articles]);
+        $categoryController = new CategoryController();
+        $categories = $categoryController->index();
+        return view('blog.index', ['articles' => $articles, 'categories'=> $categories]);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,9 +40,11 @@ Route::prefix('article')->group( function (){
     Route::get('/{id}', [ArticleController::class,'show'])->middleware('auth')->name('article.show');
     Route::get('/{id}/edit', [ArticleController::class,'edit'])->middleware('auth')->name('article.edit');
     Route::put('/{id}', [ArticleController::class,'update'])->middleware('auth')->name('article.update');
-    Route::delete('/{id}', [ArticleController::class,''])->middleware('auth')->name('article.destroy');
+    Route::delete('/{id}', [ArticleController::class,'destroy'])->middleware('auth')->name('article.destroy');
 });
 
+Route::prefix('home')->group(function (){
+    Route::get('/category/{id}', [HomeController::class,'byCategory'])->name('home.category');
 
-
+});
 require __DIR__.'/auth.php';
