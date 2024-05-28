@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +37,11 @@ Route::prefix('article')->group( function (){
     Route::get('/create', [ArticleController::class, 'create'])->middleware('auth')->name('article.create');
     Route::post('/', [ArticleController::class, 'store'])->middleware('auth')->name('article.store');
     Route::get('/{id}', [ArticleController::class,'show'])->middleware('auth')->name('article.show');
+    Route::get('/{id}/edit', [ArticleController::class,'edit'])->middleware('auth')->name('article.edit');
+    Route::put('/{id}', [ArticleController::class,'update'])->middleware('auth')->name('article.update');
+    Route::delete('/{id}', [ArticleController::class,''])->middleware('auth')->name('article.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';

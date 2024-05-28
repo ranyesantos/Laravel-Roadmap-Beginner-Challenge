@@ -15,7 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('blog.index');
+        $articles = Article::orderBy("created_at","desc")->paginate(10);
+        return view('blog.index', ['articles' => $articles]);
     }
 
     /**
@@ -73,7 +74,15 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        
+        $tagsId = Article_tag::where('article_id', $id)->pluck('tag_id');
+        $articleTags = Tag::whereIn('id', $tagsId)->get();
+        $article = Article::findOrFail($id);
+
+        $tags = Tag::whereNotIn('id', $tagsId)->get();
+
+        $articleCategory = Category::findOrFail($article->category_id);
+        $categories = Category::where('id', '!=' , $article->category_id)->get();
+        return view ('article.edit', ['article'=> $article, 'articleCategory'=> $articleCategory ,'articleTags'=> $articleTags, 'tags'=> $tags, 'categories'=> $categories]);
     }
 
     /**
@@ -81,7 +90,25 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $title = $request->input('title');
+        $text = $request->input('text');
+        $category = $request->input('category_id');
+        $tags = $request->input('tags', []);
+
+        if (!empty($title) && !empty($text) && !empty($category)){
+            Article::where('id', $id)->first()->update([
+                'title' => $title,
+                'text'=> $text,
+                'category' => $category,
+            ]);
+
+            foreach ($tags as $tagId) {
+                Article_tag::where('id', $tagId)->first()->update([
+                    'tag_id'=> $tagId,
+                ]);
+            };
+            return redirect()->route('blog.index');
+        }
     }
 
     /**
@@ -89,6 +116,7 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Article::where('id', $id)->delete();
+        return redirect()->route('blog.index');
     }
 }
