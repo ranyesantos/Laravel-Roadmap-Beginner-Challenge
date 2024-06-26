@@ -19,7 +19,9 @@ class ArticleController extends Controller
         $articles = Article::orderBy("created_at","desc")->paginate(10);
         $categoryController = new CategoryController();
         $categories = $categoryController->index();
-        return view('blog.index', ['articles' => $articles, 'categories'=> $categories]);
+        $tagController = new TagController();
+        $tags = $tagController->index();
+        return view('blog.index', ['articles' => $articles, 'categories'=> $categories, 'tags' => $tags]);
     }
 
     /**

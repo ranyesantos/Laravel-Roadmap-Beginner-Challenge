@@ -9,6 +9,7 @@ class Article_tag extends Model
 {
     use HasFactory;
     protected $fillable = [
+        "id",
         "article_id",
         "tag_id",
     ];

@@ -45,6 +45,7 @@ Route::prefix('article')->group( function (){
 
 Route::prefix('home')->group(function (){
     Route::get('/category/{id}', [HomeController::class,'byCategory'])->name('home.category');
-
+    Route::get('/tag/{id}', [HomeController::class,'byTag'])->name('home.tag');
 });
+
 require __DIR__.'/auth.php';

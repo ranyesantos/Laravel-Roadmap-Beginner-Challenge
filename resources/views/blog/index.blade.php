@@ -19,6 +19,17 @@
                         @endforeach
 
                     </ul>
+
+                    <h5>Tags</h5>
+                    <ul class="nav flex-column">
+
+                        @foreach ($tags as $tag)
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{route('home.tag', ['id' => $tag->id])}}">{{$tag->name}}</a>
+                            </li>
+                        @endforeach
+
+                    </ul>
                 </div>
             </div>
 
