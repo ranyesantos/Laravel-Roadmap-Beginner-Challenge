@@ -20,10 +20,7 @@ class HomeController extends Controller
 
         $tagIds = explode(',', $id);
 
-        foreach ($tagIds as $tagId) {
-            $articles_ids = Article_tag::where("tag_id", $tagId)->pluck('article_id');
-        }
-
+        $articles_ids = Article_tag::whereIn("tag_id", $tagIds)->pluck('article_id');
         $articles = Article::whereIn('id', $articles_ids)->get();
 
         $tag = Tag::where("id", $id)->pluck('name')->first();

@@ -20,8 +20,9 @@ class ArticleController extends Controller
         $categoryController = new CategoryController();
         $categories = $categoryController->index();
         $tagController = new TagController();
+        $title = 'Pagina Inicial';
         $tags = $tagController->index();
-        return view('blog.index', ['articles' => $articles, 'categories'=> $categories, 'tags' => $tags]);
+        return view('blog.index', ['articles' => $articles, 'categories'=> $categories, 'tags' => $tags, 'title' => $title]);
     }
 
     /**
