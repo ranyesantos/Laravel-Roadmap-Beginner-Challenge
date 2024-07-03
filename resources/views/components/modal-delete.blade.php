@@ -10,11 +10,17 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <form action="{{route('category.destroy', ['id' => $action ])}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
+        @if ($dataType == "Categories")
+            <form action="{{route('category.destroy', ['id' => $action ])}}" method="POST">
+                @csrf
+                @method('DELETE')
+        @elseif ($dataType == "Tags")
+            <form action="{{route('tag.destroy', ['id' => $action ])}}" method="POST">
+                @csrf
+                @method('DELETE')
+        @endif
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
       </div>
     </div>
   </div>

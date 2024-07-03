@@ -3,7 +3,7 @@
 @section('title', 'Sobre')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -13,7 +13,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{Route('article.create')}}">Novo Artigo</a></li>
                     <li><a class="dropdown-item" href="{{Route('category.create')}}">Manage Categories</a></li>
-                    <li><a class="dropdown-item" href="#">Manage Tags</a></li>
+                    <li><a class="dropdown-item" href="{{Route('tag.create')}}">Manage Tags</a></li>
                 </ul>
             </div>
         </div>

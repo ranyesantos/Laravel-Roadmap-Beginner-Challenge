@@ -57,4 +57,11 @@ Route::prefix('category')->group(function (){
     Route::delete('/{id}', [CategoryController::class,'destroy'])->middleware('auth')->name('category.destroy');
 });
 
+Route::prefix('tag')->group(function (){
+    Route::get('/create', [TagController::class, 'create'])->middleware('auth')->name('tag.create');
+    Route::post('/', [TagController::class, 'store'])->middleware('auth')->name('tag.store');
+    Route::put('/{id}', [TagController::class,'update'])->middleware('auth')->name('tag.update');
+    Route::delete('/{id}', [TagController::class,'destroy'])->middleware('auth')->name('tag.destroy');
+});
+
 require __DIR__.'/auth.php';

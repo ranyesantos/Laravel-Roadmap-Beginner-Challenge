@@ -21,7 +21,10 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        $tags = Tag::orderBy('created_at', 'desc')->get();
+        $title = "Manage Tags";
+        $dataType = "Tags";
+        return view('manage.create-category-tag', ['data' => $tags,'dataType' => $dataType ,'title' => $title]);
     }
 
     /**
@@ -29,23 +32,10 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        if (!empty($request)){
+            Tag::create(['name' => $request->name]);
+        }
+        return redirect()->route('tag.create');
     }
 
     /**
@@ -53,7 +43,10 @@ class TagController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (!empty($request)){
+            Tag::find($id)->update(['name' => $request->name]);
+        }
+        return redirect()->route('tag.create');
     }
 
     /**
@@ -61,6 +54,7 @@ class TagController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Tag::find($id)->delete();
+        return redirect()->route('tag.create');
     }
 }
