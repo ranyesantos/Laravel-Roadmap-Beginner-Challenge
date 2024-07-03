@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +48,13 @@ Route::prefix('article')->group( function (){
 Route::prefix('home')->group(function (){
     Route::get('/category/{id}', [HomeController::class,'byCategory'])->name('home.category');
     Route::get('/tag/{id}', [HomeController::class,'byTag'])->name('home.tag');
+});
+
+Route::prefix('category')->group(function (){
+    Route::get('/create', [CategoryController::class, 'create'])->middleware('auth')->name('category.create');
+    Route::post('/', [CategoryController::class, 'store'])->middleware('auth')->name('category.store');
+    Route::put('/{id}', [CategoryController::class,'update'])->middleware('auth')->name('category.update');
+    Route::delete('/{id}', [CategoryController::class,'destroy'])->middleware('auth')->name('category.destroy');
 });
 
 require __DIR__.'/auth.php';

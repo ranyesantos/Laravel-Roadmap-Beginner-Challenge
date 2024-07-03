@@ -21,7 +21,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::orderBy("created_at","desc")->get();
+        $title = "Manage Categories";
+        $dataType = "Categories";
+        return view('manage.create-category-tag', ['data' => $categories,'dataType' => $dataType ,'title' => $title]);
     }
 
     /**
@@ -29,23 +32,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->name;
+        if (!empty($name)){
+            Category::create(['name'=>$name]);
+        }
+        return redirect()->Route('category.create');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+
     }
 
     /**
@@ -53,7 +56,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $name = $request->name;
+        if (!empty($name)){
+            Category::find($request->id)->update(['name' => $name]);
+        }
+        return redirect()->Route('category.create');
     }
 
     /**
@@ -61,6 +68,7 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Category::find($id)->delete();
+        return redirect()->Route('category.create');
     }
 }
