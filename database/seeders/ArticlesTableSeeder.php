@@ -15,7 +15,7 @@ class ArticlesTableSeeder extends Seeder
     public function run(): void
     {
         $articles = [];
-        for ($i = 1; $i <= 30; $i++){
+        for ($i = 1; $i <= 70; $i++){
             $articles[] = [
                 'title' => "this is the title of article number $i",
                 'text' => "this is the text of article number $i",
