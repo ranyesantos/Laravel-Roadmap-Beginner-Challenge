@@ -4,45 +4,9 @@
 
 @section('content')
     <div class="container-fluid mt-3">
-        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-plus-circle"></i>
-                </button>
-
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{Route('article.create')}}">Novo Artigo</a></li>
-                    <li><a class="dropdown-item" href="{{Route('category.create')}}">Manage Categories</a></li>
-                    <li><a class="dropdown-item" href="{{Route('tag.create')}}">Manage Tags</a></li>
-                </ul>
-            </div>
-        </div>
         <div class="row">
             <!-- Menu Lateral -->
-            <div class="col-md-2">
-                <div class="p-2" style="position: absolute; width: 12%;">
-                    <h5>Categorias</h5>
-                    <ul class="nav flex-column">
-                        @foreach ($categories as $category)
-                            <li class="nav-item">
-                                <a class="nav-link active" href="{{route('home.category', ['id' => $category->id])}}">{{$category->name}}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-
-                    <h5>Tags</h5>
-                    <ul class="nav flex-column">
-
-                        @foreach ($tags as $tag)
-                            <li class="nav-item">
-                                <a class="nav-link active" href="{{route('home.tag', ['id' => $tag->id])}}">{{$tag->name}}</a>
-                            </li>
-                        @endforeach
-
-                    </ul>
-                </div>
-            </div>
-
+            @include('components.sidebar')
             <!-- Conteúdo Principal -->
             <div class="col-md-8">
 

@@ -7,12 +7,13 @@
 
     <form action="{{route('article.store')}}" method="POST">
     @csrf
+    <h1 class="text-center mt-3" >New Article</h1>
         <div class="mb-3">
-            <label for="title" class="form-label">Título</label>
+            <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" name="title" aria-describedby="title">
         </div>
         <div class="mb-3">
-            <label for="text" class="form-label">Texto</label>
+            <label for="text" class="form-label">Text</label>
             <textarea class="form-control" name="text" rows="3"></textarea>
         </div>
         <div class="d-flex flex-wrap justify-content-between">
@@ -32,7 +33,7 @@
 
             <div class="w-50 d-flex justify-content-center">
                 <div>
-                    <label for="categorySelect">Categoria</label>
+                    <label for="categorySelect">Category</label>
                     <select class="form-select" name="category_id" aria-label="categories">
                         <option selected>Categoria</option>
                         @foreach ($categories as $category)
@@ -42,7 +43,6 @@
                 </div>
             </div>
         </div>
-
 
         <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </form>

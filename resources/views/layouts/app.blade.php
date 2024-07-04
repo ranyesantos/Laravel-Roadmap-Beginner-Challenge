@@ -14,15 +14,10 @@
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
     </head>
+    <header>
+        @include('components.navbar')
+    </header>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="{{Route('blog.index')}}">Homepage</a></li>
-                    <li><a href="{{Route('blog.about')}}">Sobre</a></li>
-                </ul>
-            </nav>
-        </header>
 
         <div class="content">
             @yield('content')
