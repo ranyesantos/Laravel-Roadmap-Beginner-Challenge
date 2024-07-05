@@ -98,7 +98,13 @@ class ArticleController extends Controller
     {
         $title = $request->input('title');
         $text = $request->input('text');
-        $category = $request->input('category_id');
+        
+        if (is_int($request->category_id)) {
+            $category = $request->input('category_id');
+        } else {
+            preg_match('!\d+!', $request->category_id, $idCat);
+            $category = $idCat[0];
+        }
         $tags = $request->input('tags', []);
 
         if (!empty($title) && !empty($text) && !empty($category)){
