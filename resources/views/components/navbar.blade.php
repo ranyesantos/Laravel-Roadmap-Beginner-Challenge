@@ -10,7 +10,7 @@
                     <a class="nav-link fs-5" aria-current="page" href="{{Route('blog.index')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fs-5" href="#">About</a>
+                    <a class="nav-link fs-5" href="{{Route('blog.about')}}">About</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

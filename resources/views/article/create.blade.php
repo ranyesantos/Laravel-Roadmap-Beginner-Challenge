@@ -17,8 +17,8 @@
                 <label for="text" class="form-label">Text</label>
                 <textarea class="form-control" name="text" rows="3"></textarea>
             </div>
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="me-5 d-flex flex-wrap">
+            <div class="w-100 d-flex justify-content-center">
+                <div class="me-5 d-flex flex-wrap w-70">
                     <label for="tags" class="w-100">Tags</label>
                     @foreach ($tags as $tag)
                         <div class="form-check me-2">
@@ -32,7 +32,7 @@
                     @endforeach
                 </div>
 
-                <div class="w-50 d-flex justify-content-center">
+                <div class="w-50 d-flex justify-content-end">
                     <div>
                         <label for="categorySelect">Category</label>
                         <select class="form-select" name="category_id" aria-label="categories">

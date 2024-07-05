@@ -24,9 +24,9 @@
                         @endforeach
 
                         <div class="mt-3">
-                        {{ $articles->links('vendor.pagination.custom') }}
+                            {{ $articles->links('vendor.pagination.custom') }}
 
-        </div>
+                        </div>
 
                     </div>
                 </div>

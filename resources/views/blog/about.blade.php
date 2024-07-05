@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Sobre nós</h1>
-        <p>Esta é a página de sobre.</p>
+        <h1>About us</h1>
+        <p>This is About Us Page.</p>
     </div>
 @endsection
