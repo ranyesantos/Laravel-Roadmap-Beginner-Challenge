@@ -18,6 +18,10 @@
             <form action="{{route('tag.destroy', ['id' => $action ])}}" method="POST">
                 @csrf
                 @method('DELETE')
+        @elseif ($dataType == "article")
+            <form action="{{route('article.destroy', ['id' => $action ])}}" method="POST">
+                @csrf
+                @method('DELETE')
         @endif
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>

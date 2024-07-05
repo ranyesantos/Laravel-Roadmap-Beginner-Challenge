@@ -105,11 +105,11 @@ class ArticleController extends Controller
             Article::where('id', $id)->first()->update([
                 'title' => $title,
                 'text'=> $text,
-                'category' => $category,
+                'category_id' => $category,
             ]);
 
             foreach ($tags as $tagId) {
-                Article_tag::where('id', $tagId)->first()->update([
+                Article_tag::where('article_id', $id)->first()->update([
                     'tag_id'=> $tagId,
                 ]);
             };
@@ -122,7 +122,7 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        Article::where('id', $id)->delete();
+        Article::find($id)->delete();
         return redirect()->route('blog.index');
     }
 }
