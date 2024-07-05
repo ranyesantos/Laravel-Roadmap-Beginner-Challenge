@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function byCategory(string $id){
         $articles = Article::where("category_id", $id)->get();
         $category = Category::where('id', $id)->pluck('name')->first();
-        $title = "Categoria: " . $category;
+        $title = "Category: " . $category;
         return view('blog.filtered', ['articles' => $articles, 'title' => $title]);
     }
 

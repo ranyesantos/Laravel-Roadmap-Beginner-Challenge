@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.articleActions')
 
-@section('title', 'Detalhes')
+@section('title', 'Details')
 
-@section('content')
-<div class="container">
+@section('articleActions')
+
 
     <div class="mb-3">
         <label for="title" class="form-label">Título</label>
@@ -36,6 +36,5 @@
     </div>
 
 
-</div>
 
 @endsection

@@ -1,19 +1,20 @@
-@extends('layouts.app')
 
-@section('title', 'Detalhes')
+@extends('layouts.articleActions')
 
-@section('content')
-<div class="container">
+@section('title', 'Edit Article')
+
+@section('articleActions')
+
     <form action="{{route('article.update', ['id' => $article->id])}}" method="POST">
     @csrf
     @method('PUT')
 
         <div class="mb-3">
-            <label for="title" class="form-label">Título</label>
+            <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" name="title" value="{{$article->title}}" aria-describedby="title">
         </div>
         <div class="mb-3">
-            <label for="text" class="form-label">Texto</label>
+            <label for="text" class="form-label">Text</label>
             <textarea class="form-control" name="text" rows="3">{{$article->text}}</textarea>
         </div>
         <div class="d-flex flex-wrap justify-content-between">
@@ -44,7 +45,7 @@
 
             <div class="w-50 d-flex justify-content-end">
                 <div>
-                    <label for="categorySelect">Categoria</label>
+                    <label for="categorySelect">Category</label>
                     <select class="form-select" name="category_id" aria-label="categories">
                         <option selected>{{$articleCategory->name}}</option>
                         @foreach ($categories as $category)
@@ -56,11 +57,8 @@
         </div>
 
         <div class="d-flex justify-content-end mt-4">
-            <button class="btn btn-primary" type="submit">Finalizar</button>
+            <button class="btn btn-primary" type="submit">Save</button>
         </div>
 
     </form>
-
-</div>
-
 @endsection

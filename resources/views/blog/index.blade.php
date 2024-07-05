@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sobre')
+@section('title', 'Home Page')
 
 @section('content')
     <div class="container-fluid mt-3">
@@ -23,7 +23,11 @@
                             </div>
                         @endforeach
 
-                        {{ $articles->links() }}
+                        <div class="mt-3">
+                        {{ $articles->links('vendor.pagination.custom') }}
+
+        </div>
+
                     </div>
                 </div>
             </div>

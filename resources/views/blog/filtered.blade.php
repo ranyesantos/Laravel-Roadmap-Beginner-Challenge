@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="row">
+        <div class="row mt-3">
             <!-- Conteúdo Principal -->
             <div class="col-md-12">
                 <div class="container">
@@ -15,8 +15,6 @@
                                 <a href="{{route('article.show', ['id' => $article->id])}}" style="text-decoration: none; color: inherit;">
                                     <div class="card-body">
                                         <h3 class="card-title text-center">{{ $article->title }}</h3>
-                                   
-
                                     </div>
                                 </a>
                             </div>
