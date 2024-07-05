@@ -59,6 +59,8 @@ class ArticleController extends Controller
             };
 
             return redirect()->route('blog.index');
+        } else {
+            return redirect()->route('blog.index');
         }
     }
 
@@ -98,7 +100,7 @@ class ArticleController extends Controller
     {
         $title = $request->input('title');
         $text = $request->input('text');
-        
+
         if (is_int($request->category_id)) {
             $category = $request->input('category_id');
         } else {
